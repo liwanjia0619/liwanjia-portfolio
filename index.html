@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>李婉嘉 LI WANJIA — 产品设计师 / 作品集</title>
+<meta name="description" content="李婉嘉，产品设计师，太原科技大学产品设计学士，香港岭南大学艺术科技与商业硕士在读。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="李婉嘉 LI WANJIA — 产品设计师">
+<meta property="og:description" content="产品设计 · 艺术科技与商业。作品集 2026。">
+<meta property="og:image" content="assets/img/poster-cyber.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230B0714'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23FF2E97'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+<script>
+document.documentElement.classList.add('js');
+if (new URLSearchParams(location.search).get('theme') !== 'pink') {
+  document.documentElement.classList.add('cyber');
+}
+</script>
+<link rel="preload" as="image" href="assets/frames/f_001.webp">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="topbar">
+  <a class="brand" href="#home">
+    <b>李婉嘉</b><span>LI WANJIA</span>
+  </a>
+  <nav class="nav">
+    <a href="#works">作品</a>
+    <a href="#about">关于</a>
+    <a href="#honors">荣誉</a>
+    <a href="#contact">联系</a>
+  </nav>
+  <div class="topbar__right">
+    <div class="counter"><em data-current>01</em><i>/</i><span>05</span></div>
+    <button class="lang" type="button" aria-label="Switch language">EN</button>
+  </div>
+</header>
+
+<aside class="rail" aria-hidden="true">
+  <span>SCROLL</span>
+  <i><b></b></i>
+  <span data-pct>0%</span>
+</aside>
+
+<main>
+
+<!-- ═════════ 01 封面（滚动钉住 + 动作驱动） ═════════ -->
+<div class="hero-track" id="home">
+<section class="hero" data-index="01">
+  <div class="hero__figure" aria-hidden="true">
+    <span class="hero__glow"></span>
+    <img class="fig fig--pink" src="assets/img/avatar-hero.png" alt="">
+    <video class="fig fig--cyber hero__video" src="assets/video/action.mp4" poster="assets/img/pose-poster.jpg" muted playsinline preload="none" aria-hidden="true"></video>
+    <img class="fig fig--cyber hero__frames" id="heroFrame" src="assets/frames/f_001.webp" alt="" aria-hidden="true">
+    <img class="fig fig--cyber hero__still" src="assets/img/full-cyber.jpg" alt="">
+    <span class="hero__scanline"></span>
+  </div>
+
+  <div class="hero__meta">
+    <p class="micro">PORTFOLIO — 2026</p>
+    <p class="micro">产品设计 · 艺术科技与商业</p>
+    <p class="micro micro--role">目标岗位 / 产品设计师 · 工业设计师</p>
+    <p class="micro micro--dim">香港 / HONG KONG — 2026 年底起接受实习与全职</p>
+  </div>
+
+  <div class="hero__type">
+    <h1>
+      <span class="l l--outline">PRODUCT</span>
+      <span class="l l--solid">DESIGNER</span>
+    </h1>
+    <p class="hero__serif"><em>Li Wanjia</em> — 作品集</p>
+  </div>
+
+  <div class="hero__intro">
+    <p data-en-html="Starting from product design,<br>seeking an answer you can hold — between <b>form, technology</b> and <b>business narrative</b>.">以产品设计为起点，<br>在<b>造型、技术</b>与<b>商业叙事</b>之间找一个可以被拿在手里的答案。</p>
+    <ul class="hero__pills">
+      <li>三维建模</li><li>样机制作</li><li>3D 打印</li><li>商业计划</li>
+    </ul>
+  </div>
+
+  <dl class="hero__strip">
+    <div><dt>DESIGNER</dt><dd>李婉嘉</dd></div>
+    <div><dt>DATE OF BIRTH</dt><dd>2004.06.19</dd></div>
+    <div><dt>MAJOR</dt><dd>产品设计</dd></div>
+    <div><dt>YEAR</dt><dd>2026</dd></div>
+  </dl>
+</section>
+</div>
+
+<!-- ═════════ 02 作品 ═════════ -->
+<section class="works" id="works" data-index="02">
+  <header class="sec-head">
+    <div>
+      <p class="eyebrow"><i></i>02 — SELECTED WORKS</p>
+      <h2 class="sec-title">作品<span>WORKS</span></h2>
+    </div>
+    <p class="sec-note">五个项目，从水面清洁机器人到桌面潮玩。<br>点开任意一件看细节。</p>
+  </header>
+
+  <div class="wall">
+    <button class="tile tile--xl" data-project="lake">
+      <span class="tile__media" style="aspect-ratio:1900/999"><img src="assets/plates/feature-robot.jpg" alt="湖泊垃圾清理机器人爆炸图"></span>
+      <span class="tile__cap"><i>01</i><b>湖泊垃圾清理机器人</b><em>Lake Garbage Cleaning Robot</em></span>
+      <span class="tile__plus">＋</span>
+    </button>
+
+    <button class="tile tile--tall" data-project="campus">
+      <span class="tile__media" style="aspect-ratio:1400/1250"><img src="assets/plates/work-campus.jpg" alt="校园路面清理机"></span>
+      <span class="tile__cap"><i>02</i><b>校园路面清理机</b><em>Campus Road Cleaning Machine</em></span>
+      <span class="tile__plus">＋</span>
+    </button>
+
+    <button class="tile tile--w5" data-project="gadget">
+      <span class="tile__media" style="aspect-ratio:4/5"><img src="assets/plates/work-gadget.jpg" alt="桌面电子多功能摆件"></span>
+      <span class="tile__cap"><i>03</i><b>桌面电子多功能摆件</b><em>Retro Console Desk Gadget</em></span>
+      <span class="tile__plus">＋</span>
+    </button>
+
+    <button class="tile tile--square tile--w3" data-project="mite">
+      <span class="tile__media" style="aspect-ratio:759/628"><img src="assets/plates/work-mite.jpg" alt="除螨仪"></span>
+      <span class="tile__cap"><i>04</i><b>除螨仪</b><span class="tile__kind">课程作业</span><em>Handheld Mite Remover</em></span>
+      <span class="tile__plus">＋</span>
+    </button>
+
+    <button class="tile tile--w4" data-project="stand">
+      <span class="tile__media" style="aspect-ratio:1200/1194"><img src="assets/plates/work-stand.jpg" alt="拟人化手机支架"></span>
+      <span class="tile__cap"><i>05</i><b>拟人化手机支架</b><span class="tile__kind">个人练习</span><em>Character Phone Stand</em></span>
+      <span class="tile__plus">＋</span>
+    </button>
+
+    <div class="tile tile--note tile--note--wide">
+      <p>作品 05 / 05</p>
+      <p class="tile--note__big">另有两件获奖作品<br>与草图过程稿</p>
+      <a href="mailto:liwanjia0619@163.com">索取完整作品集 ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 03 关于 ═════════ -->
+<section class="about" id="about" data-index="03">
+  <header class="sec-head">
+    <div>
+      <p class="eyebrow"><i></i>03 — ABOUT ME</p>
+      <h2 class="sec-title">关于<span>ABOUT</span></h2>
+    </div>
+  </header>
+
+  <div class="about__grid">
+    <figure class="about__shot">
+      <img src="assets/img/hero-cyber.jpg" alt="李婉嘉的虚拟形象">
+      <span class="about__scan" aria-hidden="true"></span>
+    </figure>
+
+    <div class="about__text">
+      <blockquote class="about__quote" data-en-html="“Make it first,<br>then talk about whether it’s pretty.”">「先把它做出来，<br>再谈好不好看。」</blockquote>
+      <p data-en-html="I’m Li Wanjia, born in 2004 in Jinzhong, Shanxi. I studied Product Design at Taiyuan University of Science and Technology, and I’m now doing a master’s in Arts Technology and Business at Lingnan University, Hong Kong.">我是李婉嘉，2004 年生，山西晋中人。本科在太原科技大学读产品设计，现在香港岭南大学读艺术科技与商业硕士。</p>
+      <p data-en-html="Over four years, what I’m best at is <b>making an idea tangible</b> — sketch first, then 3D, then a prototype, and finally the wiring. The desk gadget is the only piece that actually powers on, and I love it for that.">四年多里，我最擅长的一件事是把一个想法<b>做到能摸</b>——先画草图、再建三维、然后打样、最后把电路接上。桌面电子摆件是唯一一件真正通电跑起来的作品，我很喜欢它。</p>
+      <p data-en-html="More than “looking good”, I care about <b>why it was made</b>: who it saves effort for, whose problem it solves. That’s why in the lake-cleaning robot project I spent most of my time on user research, SWOT analysis and structural sketches.">相比"好看"，我更在意它<b>为什么被做出来</b>：为谁省力、替谁解决麻烦。也因此，湖泊清理机器人那个项目里，我花了最多时间在用户调研、SWOT 分析与结构草图上。</p>
+      <p class="about__sign"><em>Li Wanjia</em><span>2026 · 香港</span></p>
+    </div>
+
+    <div class="about__facts">
+      <div class="factgroup">
+        <h4>EDUCATION</h4>
+        <div class="fact">
+          <p class="fact__time">2026.08 — 至今</p>
+          <p class="fact__main">岭南大学<em>艺术科技与商业 · 硕士</em></p>
+          <p class="fact__side">香港 · 屯门</p>
+        </div>
+        <div class="fact">
+          <p class="fact__time">2022.09 — 2026.06</p>
+          <p class="fact__main">太原科技大学<em>产品设计 · 艺术学学士</em></p>
+          <p class="fact__side">GPA 82.62 / 100</p>
+        </div>
+      </div>
+
+      <div class="factgroup">
+        <h4>SOFTWARE</h4>
+        <ul class="tick tick--inline">
+          <li>Rhino</li>
+          <li>KeyShot</li>
+          <li>SolidWorks</li>
+          <li>Blender</li>
+          <li>Photoshop</li>
+          <li>Illustrator</li>
+        </ul>
+      </div>
+
+      <div class="factgroup">
+        <h4>CAPABILITY</h4>
+        <ul class="tick">
+          <li>产品造型与结构设计</li>
+          <li>三维建模与渲染</li>
+          <li>3D 打印与样机制作</li>
+          <li>电子模块整合</li>
+          <li>展板与作品集版式</li>
+          <li>商业计划书撰写</li>
+          <li>手绘草图表达</li>
+        </ul>
+      </div>
+
+      <div class="factgroup">
+        <h4>LANGUAGE</h4>
+        <ul class="tick">
+          <li>中文 — 母语</li>
+          <li>英语 — IELTS 5.5 · CET-4</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 04 荣誉 ═════════ -->
+<section class="honors" id="honors" data-index="04">
+  <header class="sec-head">
+    <div>
+      <p class="eyebrow"><i></i>04 — HONORS</p>
+      <h2 class="sec-title">荣誉<span>HONORS</span></h2>
+    </div>
+    <p class="sec-note">2023 — 2026<br>五项校内外奖项与奖学金</p>
+  </header>
+
+  <ol class="honor-list">
+    <li><span class="honor__date">2026.03</span><span class="honor__name">校级一等奖学金<em>University First-class Scholarship</em></span><span class="honor__org" data-en-html="TYUST">太原科技大学</span></li>
+    <li><span class="honor__date">2025.09</span><span class="honor__name">2025 UAD Cup 全国大学生城市设计竞赛 · 三等奖<em>作品 / 自然共行：交互式适老携幼探索载具</em></span><span class="honor__org">全国</span></li>
+    <li><span class="honor__date">2025.08</span><span class="honor__name">英国国际创意大赛 · 银奖<em>作品 / 针对介入手术的外骨骼辅助装置</em></span><span class="honor__org">国际</span></li>
+    <li><span class="honor__date">2025.07</span><span class="honor__name">大学生视觉艺术与设计大赛 · 省级二等奖<em>同一作品 / 自然共行：交互式适老携幼探索载具</em></span><span class="honor__org">山西</span></li>
+    <li><span class="honor__date">2023.06</span><span class="honor__name">校级二等奖学金<em>University Second-class Scholarship</em></span><span class="honor__org" data-en-html="TYUST">太原科技大学</span></li>
+  </ol>
+</section>
+
+<!-- ═════════ 05 联系 ═════════ -->
+<section class="contact" id="contact" data-index="05">
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>SAY HI<i>✳</i>聊聊设计<i>✳</i></span><span>SAY HI<i>✳</i>聊聊设计<i>✳</i></span><span>SAY HI<i>✳</i>聊聊设计<i>✳</i></span>
+    </div>
+  </div>
+
+  <div class="contact__grid">
+    <div class="contact__lead">
+      <p class="eyebrow"><i></i>05 — CONTACT</p>
+      <h2 data-en-html="Based in Hong Kong from Aug 2026,<br>available for <b>internship and full-time</b> roles from late 2026.">2026 年 8 月起在港，<br><b>年底</b>起接受实习与全职机会。</h2>
+      <div class="contact__row">
+        <a class="mail" href="mailto:liwanjia0619@163.com">liwanjia0619@163.com<i>↗</i></a>
+        <figure class="wechat">
+          <img src="assets/img/wechat-qr.png" alt="微信二维码 liwanj1a">
+        </figure>
+        <figure class="contact__photo">
+          <img src="assets/img/portrait-real.jpg" alt="李婉嘉">
+        </figure>
+      </div>
+    </div>
+    <dl class="contact__list">
+      <div><dt>PHONE</dt><dd>+86 138 3408 3888</dd></div>
+      <div><dt>WECHAT</dt><dd>liwanj1a</dd></div>
+      <div><dt>BASE</dt><dd>香港 · 屯门 / 山西 · 太原</dd></div>
+      <div><dt>LANG</dt><dd>中文 · English</dd></div>
+      <div><dt>POSITION</dt><dd>产品设计师 / 工业设计师</dd></div>
+      <div><dt>AVAILABLE</dt><dd>2026 年底起</dd></div>
+    </dl>
+  </div>
+
+  <footer class="foot">
+    <span>© 2026 李婉嘉 LI WANJIA</span>
+    <a href="#home">回到顶部 ↑</a>
+  </footer>
+</section>
+
+</main>
+
+<!-- 作品详情 -->
+<div class="lightbox" id="lightbox" hidden>
+  <div class="lb__scrim" data-close></div>
+  <div class="lb__panel" role="dialog" aria-modal="true" aria-labelledby="lb-title">
+    <button class="lb__close" data-close aria-label="关闭">✕</button>
+    <div class="lb__fig"><img id="lb-img" src="" alt=""></div>
+    <div class="lb__meta">
+      <p class="lb__idx"><span id="lb-idx">01</span> / 作品</p>
+      <h3 id="lb-title"></h3>
+      <p class="lb__en" id="lb-en"></p>
+      <dl class="lb__facts">
+        <div><dt>身份</dt><dd id="lb-role"></dd></div>
+        <div><dt>负责</dt><dd id="lb-duty"></dd></div>
+        <div><dt>周期</dt><dd id="lb-time"></dd></div>
+      </dl>
+      <ul class="lb__points" id="lb-points"></ul>
+      <p class="lb__tags" id="lb-tags"></p>
+    </div>
+  </div>
+</div>
+
+<div class="spot" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"><span></span><em>VIEW</em></div>
+
+<script src="main.js"></script>
+</body>
+</html>
