@@ -1015,3 +1015,11 @@ html[lang="en"] .plate__title,.hero__serif{letter-spacing:.01em}
 /* 挂绳加长：牌子落到胸口高度，避开人脸和比 V 的手 */
 .badge__strap{height:clamp(150px,18vh,206px)}
 .badge{right:clamp(118px,16.6vw,252px)}
+
+/* 工牌左移：挂在大字与人物之间的空档，不压人物 */
+.badge{right:clamp(200px,25.6vw,368px)}
+.badge__card{width:clamp(180px,14.8vw,214px)}
+
+/* 再收一点，和标题、人物都留出呼吸 */
+.badge{right:clamp(206px,26.2vw,378px)}
+.badge__card{width:clamp(172px,13.9vw,202px)}
