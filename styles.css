@@ -970,3 +970,48 @@ html[lang="en"] .plate__title,.hero__serif{letter-spacing:.01em}
 /* 工牌再上提一点，别压住比 V 的手 */
 .badge__strap{height:clamp(56px,6.6vh,78px)}
 .badge{top:46px}
+
+/* ═══════════ 工牌 · 放大 + 竖版 ═══════════ */
+.badge{top:0;right:clamp(120px,17vw,258px);pointer-events:none}
+.badge__strap{width:13px;height:clamp(64px,7.5vh,96px)}
+.badge__clip{width:34px;height:15px}
+.badge__card{
+  width:clamp(196px,17.4vw,252px);
+  aspect-ratio:2/3;
+  background:#F5EDE4;color:#191320;
+  display:flex;flex-direction:column;
+  border-radius:8px;overflow:hidden;position:relative;
+  box-shadow:0 26px 60px rgba(0,0,0,.62),0 0 0 1px rgba(255,255,255,.16) inset;
+  pointer-events:auto;cursor:grab;touch-action:none;
+  user-select:none;-webkit-user-select:none;
+}
+.badge__card:active{cursor:grabbing}
+.badge__top{padding:11px 12px 8px}
+.badge__kicker{font:400 6.6px/1 var(--mono);letter-spacing:.2em;color:#9A8A90}
+.badge__name{font-size:22px;font-weight:800;line-height:1.05;letter-spacing:.01em;margin-top:5px}
+.badge__role{font:400 6.8px/1.5 var(--mono);letter-spacing:.14em;color:#C2185B;margin-top:4px}
+.badge__shot{flex:1;min-height:0}
+.badge__photo{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9) contrast(1.03)}
+.badge__bottom{padding:8px 12px 10px}
+.badge__barcode{
+  height:18px;
+  background:repeating-linear-gradient(to right,#191320 0 1.2px,transparent 1.2px 3.6px,#191320 3.6px 4.8px,transparent 4.8px 8px,#191320 8px 9px,transparent 9px 12px);
+  opacity:.88;
+}
+.badge__id{font:400 6px/1 var(--mono);letter-spacing:.18em;color:#6F6268;margin-top:5px}
+.badge__tap{
+  position:absolute;right:-1px;bottom:-1px;
+  font:400 6px/1 var(--mono);letter-spacing:.16em;color:#C2185B;
+  background:#F5EDE4;padding:4px 7px;border:1px solid #E3D6D9;border-radius:6px 0 0 0;
+  opacity:0;transition:opacity .3s;
+}
+.badge__card:hover .badge__tap,.badge__card:focus-visible .badge__tap{opacity:1}
+.badge__card:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+/* 拖动时不要和微摆打架 */
+.badge__card.is-dragging{animation:none;box-shadow:0 34px 70px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.22) inset}
+.badge__card.is-dragging .badge__tap{opacity:0}
+
+/* 挂绳加长：牌子落到胸口高度，避开人脸和比 V 的手 */
+.badge__strap{height:clamp(150px,18vh,206px)}
+.badge{right:clamp(118px,16.6vw,252px)}

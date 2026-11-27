@@ -193,33 +193,107 @@
     })();
   })();
 
-  /* ── 工牌：滚一下掉下来，带阻尼摆动 ── */
+  /* ── 工牌：滚一下掉下来 + 可拖动 + 点击跳转关于 ── */
   (function badgeFx() {
     const swing = document.querySelector('.badge__swing');
+    const card = document.querySelector('.badge__card');
+    const strap = document.querySelector('.badge__strap');
+    const clip = document.querySelector('.badge__clip');
     const track = document.querySelector('.hero-track');
-    if (!swing || !track || matchMedia('(max-width:900px)').matches) return;
+    if (!swing || !card || !track) return;
 
     const c1 = 1.70158, c3 = c1 + 1;
     const easeOutBack = function (t) {
       return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
     };
 
+    let baseY = 0, baseRot = 0;      // 由滚动驱动
+    let dx = 0, dy = 0, rot = 0;     // 由拖拽驱动
+    let vx = 0, vy = 0, vr = 0;
+    let dragging = false, moved = 0, sx = 0, sy = 0;
+    let hideY = -520;
+
+    function measure() {
+      hideY = -((strap ? strap.offsetHeight : 80) + (clip ? clip.offsetHeight : 14) + card.offsetHeight + 18);
+    }
+
+    function apply() {
+      swing.style.transform =
+        'translate(' + dx.toFixed(1) + 'px,' + (baseY + dy).toFixed(1) + 'px) rotate(' + (baseRot + rot).toFixed(2) + 'deg)';
+    }
+
     let raf = 0;
-    function draw() {
+    function onScrollFrame() {
       raf = 0;
+      if (dragging) return;
       const rect = track.getBoundingClientRect();
       const total = Math.max(1, track.offsetHeight - window.innerHeight);
       const p = Math.min(1, Math.max(0, -rect.top / total));
       const drop = Math.min(1, p / 0.2);
-      const y = -262 * (1 - easeOutBack(drop));
-      const amp = 11 * Math.exp(-3.6 * p);
-      const rot = Math.sin(p * 30) * amp;
-      swing.style.transform = 'translateY(' + y.toFixed(1) + 'px) rotate(' + rot.toFixed(2) + 'deg)';
+      baseY = hideY * (1 - easeOutBack(drop));
+      const amp = 9 * Math.exp(-3.6 * p);
+      baseRot = Math.sin(p * 30) * amp;
+      apply();
     }
-    function onScroll() { if (!raf) raf = requestAnimationFrame(draw); }
+    function onScroll() { if (!raf) raf = requestAnimationFrame(onScrollFrame); }
+
+    function spring() {
+      vx = (vx - dx * 0.14) * 0.84;
+      vy = (vy - dy * 0.14) * 0.84;
+      vr = (vr - rot * 0.14) * 0.84;
+      dx += vx; dy += vy; rot += vr;
+      apply();
+      if (Math.abs(dx) > 0.15 || Math.abs(dy) > 0.15 || Math.abs(rot) > 0.15 ||
+          Math.abs(vx) > 0.15 || Math.abs(vy) > 0.15 || Math.abs(vr) > 0.15) {
+        requestAnimationFrame(spring);
+      } else {
+        dx = dy = rot = vx = vy = vr = 0;
+        apply();
+      }
+    }
+
+    function goAbout() {
+      const t = document.querySelector('#about');
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    card.addEventListener('pointerdown', function (e) {
+      if (e.button !== undefined && e.button !== 0) return;
+      dragging = true; moved = 0;
+      sx = e.clientX; sy = e.clientY;
+      card.classList.add('is-dragging');
+      try { card.setPointerCapture(e.pointerId); } catch (err) {}
+      e.preventDefault();
+    });
+
+    card.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      dx = Math.max(-320, Math.min(320, e.clientX - sx));
+      dy = Math.max(-420, Math.min(460, e.clientY - sy));
+      rot = Math.max(-18, Math.min(18, dx * 0.07));
+      moved = Math.max(moved, Math.abs(e.clientX - sx) + Math.abs(e.clientY - sy));
+      apply();
+    });
+
+    function endDrag(e) {
+      if (!dragging) return;
+      dragging = false;
+      card.classList.remove('is-dragging');
+      try { card.releasePointerCapture(e.pointerId); } catch (err) {}
+      if (moved < 7) { dx = 0; dy = 0; rot = 0; apply(); goAbout(); }
+      else { vx = dx * 0.06; vy = dy * 0.06; requestAnimationFrame(spring); }
+    }
+    card.addEventListener('pointerup', endDrag);
+    card.addEventListener('pointercancel', endDrag);
+
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goAbout(); }
+    });
+
     addEventListener('scroll', onScroll, { passive: true });
-    addEventListener('resize', onScroll);
-    draw();
+    addEventListener('resize', function () { measure(); onScroll(); });
+    addEventListener('load', function () { measure(); onScroll(); });
+    measure(); onScrollFrame();
   })();
 
   /* ── 首屏：逐帧滚动驱动（手机用视频自动播放） ── */
