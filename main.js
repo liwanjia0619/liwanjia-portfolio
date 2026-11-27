@@ -195,12 +195,13 @@
 
   /* ── 工牌：滚一下掉下来 + 可拖动 + 点击跳转关于 ── */
   (function badgeFx() {
+    const badge = document.querySelector('.badge');
     const swing = document.querySelector('.badge__swing');
     const card = document.querySelector('.badge__card');
     const strap = document.querySelector('.badge__strap');
     const clip = document.querySelector('.badge__clip');
     const track = document.querySelector('.hero-track');
-    if (!swing || !card || !track) return;
+    if (!badge || !swing || !card || !track) return;
 
     const c1 = 1.70158, c3 = c1 + 1;
     const easeOutBack = function (t) {
@@ -214,12 +215,14 @@
     let hideY = -520;
 
     function measure() {
-      hideY = -((strap ? strap.offsetHeight : 80) + (clip ? clip.offsetHeight : 14) + card.offsetHeight + 18);
+      hideY = -((strap ? strap.offsetHeight : 80) + (clip ? clip.offsetHeight : 14) + card.offsetHeight + 24);
     }
 
     function apply() {
+      // 整块（挂绳 + 卡）由滚动带动收放；拖拽只作用于牌子本身
+      badge.style.transform = 'translateY(' + baseY.toFixed(1) + 'px)';
       swing.style.transform =
-        'translate(' + dx.toFixed(1) + 'px,' + (baseY + dy).toFixed(1) + 'px) rotate(' + (baseRot + rot).toFixed(2) + 'deg)';
+        'translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px) rotate(' + (baseRot + rot).toFixed(2) + 'deg)';
     }
 
     let raf = 0;
@@ -229,8 +232,12 @@
       const rect = track.getBoundingClientRect();
       const total = Math.max(1, track.offsetHeight - window.innerHeight);
       const p = Math.min(1, Math.max(0, -rect.top / total));
-      const drop = Math.min(1, p / 0.2);
-      baseY = hideY * (1 - easeOutBack(drop));
+      // 先慢后快（重力感），落地后再回弹两下
+      const u = Math.min(1, p / 0.46);
+      const fall = 1 - Math.pow(u, 2.2);
+      const over = Math.min(1, Math.max(0, (p - 0.46) / 0.22));
+      const bounce = over > 0 ? Math.sin(over * Math.PI * 2.2) * 18 * (1 - over) : 0;
+      baseY = hideY * fall + bounce;
       const amp = 9 * Math.exp(-3.6 * p);
       baseRot = Math.sin(p * 30) * amp;
       apply();
