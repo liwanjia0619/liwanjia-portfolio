@@ -193,6 +193,35 @@
     })();
   })();
 
+  /* ── 工牌：滚一下掉下来，带阻尼摆动 ── */
+  (function badgeFx() {
+    const swing = document.querySelector('.badge__swing');
+    const track = document.querySelector('.hero-track');
+    if (!swing || !track || matchMedia('(max-width:900px)').matches) return;
+
+    const c1 = 1.70158, c3 = c1 + 1;
+    const easeOutBack = function (t) {
+      return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+    };
+
+    let raf = 0;
+    function draw() {
+      raf = 0;
+      const rect = track.getBoundingClientRect();
+      const total = Math.max(1, track.offsetHeight - window.innerHeight);
+      const p = Math.min(1, Math.max(0, -rect.top / total));
+      const drop = Math.min(1, p / 0.2);
+      const y = -262 * (1 - easeOutBack(drop));
+      const amp = 11 * Math.exp(-3.6 * p);
+      const rot = Math.sin(p * 30) * amp;
+      swing.style.transform = 'translateY(' + y.toFixed(1) + 'px) rotate(' + rot.toFixed(2) + 'deg)';
+    }
+    function onScroll() { if (!raf) raf = requestAnimationFrame(draw); }
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+    draw();
+  })();
+
   /* ── 首屏：逐帧滚动驱动（手机用视频自动播放） ── */
   (function heroFrames() {
     const track = document.querySelector('.hero-track');

@@ -893,3 +893,80 @@ html[lang="en"] .plate__title,.hero__serif{letter-spacing:.01em}
   }
   .contact__row .contact__photo{justify-self:start;width:min(62%,210px)}
 }
+
+/* ═══════════ 工牌：向下翻页时掉落并摆动 ═══════════ */
+.badge{
+  position:absolute;top:0;right:clamp(20px,7vw,110px);
+  z-index:6;pointer-events:none;
+  display:flex;flex-direction:column;align-items:center;
+  will-change:transform;
+}
+.badge__strap{
+  display:block;width:9px;height:clamp(70px,9vh,110px);
+  background:linear-gradient(to bottom,#1B1520,#0C0812);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
+}
+.badge__clip{
+  display:block;width:26px;height:12px;margin-top:-1px;
+  background:linear-gradient(to bottom,#8C8FA6,#4A4C5E);
+  border-radius:2px;
+  box-shadow:0 1px 2px rgba(0,0,0,.5);
+}
+.badge__swing{
+  transform-origin:50% 0;
+  transform:rotate(0deg) translateY(-260px);
+  will-change:transform;
+}
+.badge__card{
+  width:clamp(132px,11.6vw,168px);
+  background:#F5EDE4;color:#1A1420;
+  border-radius:6px;overflow:hidden;
+  box-shadow:0 18px 40px rgba(0,0,0,.55),0 2px 0 rgba(255,255,255,.35) inset;
+  display:grid;grid-template-columns:44% 56%;
+}
+.badge__photo{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.92) contrast(1.02)}
+.badge__body{padding:8px 8px 9px;display:flex;flex-direction:column}
+.badge__kicker{font:400 6px/1 var(--mono);letter-spacing:.18em;color:#8A7A82}
+.badge__name{font-size:15px;font-weight:700;line-height:1.15;margin-top:5px;letter-spacing:.02em}
+.badge__role{font:400 6px/1.5 var(--mono);letter-spacing:.12em;color:#C2185B;margin-top:2px}
+.badge__barcode{
+  height:16px;margin-top:auto;
+  background:repeating-linear-gradient(to right,#1A1420 0 1px,transparent 1px 3px,#1A1420 3px 4px,transparent 4px 7px,#1A1420 7px 9px,transparent 9px 11px);
+  opacity:.85;
+}
+.badge__id{font:400 5.5px/1 var(--mono);letter-spacing:.14em;color:#6B5F66;margin-top:3px}
+
+@media (max-width:900px){ .badge{display:none} }
+
+/* 工牌卡片：静止后的微摆 */
+.badge__card{
+  transform-origin:50% -10px;
+  animation:badgeIdle 5.5s ease-in-out infinite;
+}
+@keyframes badgeIdle{
+  0%,100%{transform:rotate(-.9deg)}
+  50%{transform:rotate(.9deg)}
+}
+@media (prefers-reduced-motion:reduce){.badge__card{animation:none}}
+
+/* 工牌微调：露出挂绳，避开顶栏和人物面部 */
+.badge{top:54px;right:clamp(18px,4.6vw,74px)}
+.badge__strap{
+  width:11px;height:clamp(84px,10vh,120px);
+  background:linear-gradient(to bottom,#2A2230 0%,#141019 60%,#0B0810 100%);
+  border-radius:2px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.07),0 6px 14px rgba(0,0,0,.5);
+}
+.badge__strap::after{
+  content:"";display:block;height:100%;width:1px;margin:0 auto;
+  background:linear-gradient(to bottom,rgba(255,46,151,.0),rgba(255,46,151,.55),rgba(255,46,151,0));
+}
+.badge__card{width:clamp(124px,10.6vw,156px)}
+
+/* 工牌靠右，避开人脸 */
+.badge{right:clamp(10px,2.4vw,38px)}
+@media (max-width:1180px){.badge{right:6px}}
+
+/* 工牌再上提一点，别压住比 V 的手 */
+.badge__strap{height:clamp(56px,6.6vh,78px)}
+.badge{top:46px}
